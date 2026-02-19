@@ -62,14 +62,14 @@ const Projects = () => {
               <div className="flex gap-3">
                 <a
                   className="px-3 bg-blue-500 text-white w-full text-center font-semibold rounded-xl ring ring-white/90 py-2"
-                  href=""
+                  href="https://portfolio-4vox.vercel.app"
                   target="_blank"
                 >
                   Live Demo
                 </a>
                 <a
                   className="px-3 bg-gray-900 text-white w-full text-center ring ring-white/90 font-semibold rounded-xl py-2"
-                  href="/"
+                  href="https://github.com/Ayushverma1238/Portfolio.git"
                   target="_blank"
                 >
                   Github

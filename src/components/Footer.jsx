@@ -44,7 +44,7 @@ const Footer = () => {
         </motion.div>
 
         <div data-aos= "zoom-in-up" className=" transition-transform duration-300 font-semibold">
-          &copy; 2026 <b>Ayush Verma</b>. All rights reserved.
+          &copy; {new Date().getFullYear()} <b>Ayush Verma</b>. All rights reserved.
         </div>
 
         <button data-aos = "zoom-in-down"

@@ -1,8 +1,8 @@
 import Navbar from "./components/Navbar";
 import About from "./components/About";
 import Projects from "./components/Projects";
-import Skills from "./components/skills";
-import Contact from "./components/contact";
+import Skills from "./components/Skills";
+import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import { motion } from "motion/react";
 import { useState, useEffect } from "react";

@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import { useEffect } from "react";
 import AOS from "aos";
+import emailjs from '@emailjs/browser'
 import { motion } from 'motion/react';
 import "aos/dist/aos.css";
 
@@ -15,6 +16,31 @@ const Contact = () => {
     const [Name, setName] = useState("")
     const [email, setemail] = useState("")
     const [message, setmessage] = useState("")
+
+    const handleSubmit = (e)=>{
+        e.preventDefault();
+
+        const serviceId = 'service_aru12zm';
+        const templateId = 'template_swzr27a';
+        const publickey = 'HASMzMw7vJ_d4gQmT';
+
+        const templateParams = {
+            form_name:Name,
+            form_email:email,
+            to_name: "Ayush Verma",
+            message : message,
+        };
+        
+        emailjs.send(serviceId, templateId, templateParams,publickey)
+        .then((response)=>{
+            // console.log('Email send successfully!', response);
+            setName('')
+            setemail('')
+            setmessage('')
+        }).catch((error)=>{
+            console.log("Error sending email", error);
+        }); 
+    }
   return (
     <>
         <section id='contact' className='dark:text-white text-gray-800 overflow-x-hidden bg-linear-to-br pb-20 min-h-screen from-cyan-100 to-sky-100 dark:from-gray-800 dark:to-slate-700'>
@@ -22,11 +48,13 @@ const Contact = () => {
                 <h1 className='text-3xl font-bold text-blue-700'>Get In Touch</h1>
                 <h2 className='text-xl max-w-4xl text-center dark:text-gray-300 text-gray-900 font-semibold'>I'm open to collaborations, freelance opportunities, or just a friendly chat. Fill out the form or drop me an email!</h2>
             </div>
-            <motion.div
+            <motion.form
             initial={{ opacity: 0, x: -150 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, ease:"easeOut" }}
             viewport={{ once: true }}
+
+            onSubmit={handleSubmit}
             className='max-w-3xl  mx-10 md:mx-auto flex flex-col gap-5 py-10 rounded-2xl bg-white dark:bg-gray-900'>
                 <div className='flex px-10 flex-col gap-3'>
                     <label className='font-bold text-lg' htmlFor="name">Name</label>
@@ -42,13 +70,13 @@ const Contact = () => {
                 </div>
                 <div className='px-14'>
 
-                <button className='w-full rounded-xl my-5 py-3 text-white bg-blue-500 font-bold'>Send Message</button>
+                <button type='submit' className='w-full rounded-xl my-5 py-3 text-white bg-blue-500 font-bold'>Send Message</button>
                 </div>
                 <div className='font-bold text-center'>
                     <span>Or email me at: </span>
                     <span className='text-blue-600'>vermaayush9170@gmail.com</span>
                 </div>
-            </motion.div>
+            </motion.form>
         </section>
     </>
   )

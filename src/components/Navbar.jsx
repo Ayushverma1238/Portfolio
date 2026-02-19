@@ -1,9 +1,9 @@
-import React from "react";
-// import { useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const Navbar = () => {
   const [active, setActive] = useState("home");
+  const [open, setOpen] = useState(false);
+
   useEffect(() => {
     const sections = document.querySelectorAll("section");
 
@@ -32,80 +32,73 @@ const Navbar = () => {
   }, []);
 
   return (
-    <>
-      <div className="text-white z-10000 flex fixed top-0 w-screen shadow-[0_0_20px_rgba(0,0,0,0.9)]  justify-between items-center px-10 py-5 bg-gray-900 opacity-95">
+    <div className="text-white fixed top-0 w-full z-50 bg-gray-900 shadow-lg">
+      
+      {/* Navbar Top */}
+      <div className="flex justify-between items-center px-6 py-4">
         <h1 className="font-bold text-lg">
           <a href="/">Ayush Verma</a>
         </h1>
-        <ul className="flex justify-between items-center gap-10">
-          <li className="group relative inline-block cursor-pointer">
-            <a
-              className="font-semibold cursor-pointer hover:text-blue-500"
-              href="#home"
-            >
-              Home
-            </a>
-            <div
-              className={`absolute left-0 -bottom-1 h-0.5 bg-blue-500 transition-all duration-300
-${active === "home" ? "w-full" : "w-0 "}
-`}
-            ></div>
-          </li>
-          <li className="group relative inline-block cursor-pointer">
-            <a
-              className="font-semibold cursor-pointer hover:text-blue-500"
-              href="#about"
-            >
-              About
-            </a>
-            <div
-              className={`absolute left-0 -bottom-1 h-0.5 bg-blue-500 transition-all duration-300
-  ${active === "about" ? "w-full" : "w-0 "}
-`}
-            ></div>
-          </li>
-          <li className="group relative inline-block cursor-pointer">
-            <a
-              className="font-semibold cursor-pointer hover:text-blue-500"
-              href="#skill"
-            >
-              Skills
-            </a>
-            <div
-              className={`absolute left-0 -bottom-1 h-0.5 bg-blue-500 transition-all duration-300
-  ${active === "skill" ? "w-full" : "w-0 "}
-`}
-            ></div>
-          </li>
-          <li className="group relative inline-block cursor-pointer">
-            <a
-              className="font-semibold cursor-pointer hover:text-blue-500"
-              href="#projects"
-            >
-              Projects
-            </a>
-            <div
-              className={`absolute left-0 -bottom-1 h-0.5 bg-blue-500 transition-all duration-300
-      ${active === "projects" ? "w-full" : "w-0 "}
-`}
-            ></div>
-          </li>
-          <li className="group relative inline-block cursor-pointer">
-            <a
-              className="font-semibold cursor-pointer hover:text-blue-500"
-              href="#contact"
-            >
-              Contact
-            </a>
-            <div
-              className={`absolute left-0 -bottom-1 h-0.5 bg-blue-500 transition-all duration-300
-      ${active === "contact" ? "w-full" : "w-0 "}
-`}
-            ></div>
-          </li>
+
+        {/* Desktop Menu */}
+        <ul className="hidden md:flex gap-8">
+          {["home", "about", "skill", "projects", "contact"].map((item) => (
+            <li key={item} className="relative">
+              <a
+                href={`#${item}`}
+                className="font-semibold hover:text-blue-500"
+              >
+                {item.charAt(0).toUpperCase() + item.slice(1)}
+              </a>
+              <div
+                className={`absolute left-0 -bottom-1 h-0.5 bg-blue-500 transition-all duration-300 ${
+                  active === item ? "w-full" : "w-0"
+                }`}
+              ></div>
+            </li>
+          ))}
         </ul>
+
+        {/* Hamburger Button */}
+        <button
+          onClick={() => setOpen(!open)}
+          className="md:hidden flex flex-col w-8 h-6 justify-between"
+        >
+          <span
+            className={`h-1 w-full bg-white rounded transition-all ${
+              open ? "rotate-45 translate-y-2" : ""
+            }`}
+          ></span>
+          <span
+            className={`h-1 w-full bg-white rounded transition-all ${
+              open ? "opacity-0" : ""
+            }`}
+          ></span>
+          <span
+            className={`h-1 w-full bg-white rounded transition-all ${
+              open ? "-rotate-45 -translate-y-2" : ""
+            }`}
+          ></span>
+        </button>
       </div>
-    </>
+
+      {/* Mobile Menu */}
+      {open && (
+        <ul className="md:hidden flex flex-col items-center gap-6 pb-6 bg-gray-900">
+          {["home", "about", "skill", "projects", "contact"].map((item) => (
+            <li key={item}>
+              <a
+                href={`#${item}`}
+                onClick={() => setOpen(false)}
+                className="font-semibold hover:text-blue-500"
+              >
+                {item.charAt(0).toUpperCase() + item.slice(1)}
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
   );
 };
 

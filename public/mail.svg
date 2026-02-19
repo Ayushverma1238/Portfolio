@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="48"
+     height="48"
+     viewBox="0 0 24 24"
+     fill="#0077b5">
+
+  <!-- Envelope Body -->
+  <path d="M3 6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v1l-9 6-9-6V6z"/>
+  <path d="M3 8.5l8.4 5.6a1 1 0 0 0 1.2 0L21 8.5V18a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8.5z"/>
+
+</svg>

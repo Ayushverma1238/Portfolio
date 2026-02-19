@@ -32,7 +32,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className="text-white fixed top-0 w-full z-50 bg-gray-900 shadow-lg">
+    <div className="text-white fixed top-0 w-full z-500000 opacity-97 bg-gray-900 shadow-lg">
       
       {/* Navbar Top */}
       <div className="flex justify-between items-center px-6 py-4">
@@ -62,7 +62,7 @@ const Navbar = () => {
         {/* Hamburger Button */}
         <button
           onClick={() => setOpen(!open)}
-          className="md:hidden flex flex-col w-8 h-6 justify-between"
+          className="sm:hidden flex flex-col w-8 h-6 justify-between"
         >
           <span
             className={`h-1 w-full bg-white rounded transition-all ${

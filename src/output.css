@@ -287,6 +287,9 @@
   .z-10000 {
     z-index: 10000;
   }
+  .z-500000 {
+    z-index: 500000;
+  }
   .z-\[-1\] {
     z-index: -1;
   }
@@ -1155,14 +1158,26 @@
   .opacity-0 {
     opacity: 0%;
   }
+  .opacity-9 {
+    opacity: 9%;
+  }
   .opacity-30 {
     opacity: 30%;
   }
   .opacity-40 {
     opacity: 40%;
   }
+  .opacity-80 {
+    opacity: 80%;
+  }
   .opacity-95 {
     opacity: 95%;
+  }
+  .opacity-97 {
+    opacity: 97%;
+  }
+  .opacity-98 {
+    opacity: 98%;
   }
   .opacity-100 {
     opacity: 100%;
@@ -1378,6 +1393,11 @@
           --tw-shadow-color: color-mix(in oklab, var(--color-gray-500) var(--tw-shadow-alpha), transparent);
         }
       }
+    }
+  }
+  .sm\:hidden {
+    @media (width >= 40rem) {
+      display: none;
     }
   }
   .sm\:h-80 {
